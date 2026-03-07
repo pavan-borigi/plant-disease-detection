@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+.venv/
+.venv311/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# Build outputs
+dist/
+build/
+*.h5

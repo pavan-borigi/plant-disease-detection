@@ -1,0 +1,37 @@
+import { useEffect } from 'react';
+import './index.css';
+import useLenis from './hooks/useLenis';
+import { siteConfig } from './config';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import DetectPage from './pages/DetectPage';
+
+function App() {
+  // Initialize Lenis smooth scrolling
+  useLenis();
+
+  useEffect(() => {
+    // Set page title from config
+    if (siteConfig.title) {
+      document.title = siteConfig.title;
+    }
+
+    // Add viewport meta for better mobile experience
+    const metaViewport = document.querySelector('meta[name="viewport"]');
+    if (metaViewport) {
+      metaViewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/detect" element={<DetectPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
