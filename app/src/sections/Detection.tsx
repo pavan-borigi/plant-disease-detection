@@ -44,7 +44,7 @@ const Detection: React.FC = () => {
       await new Promise((resolve) => setTimeout(resolve, 800));
       setStatus('classifying');
 
-      const res = await fetch('http://localhost:5000/api/detect', {
+      const res = await fetch('https://plant-disease-detection-ys5e.onrender.com/api/detect', {
         method: 'POST',
         body: formData,
       });
