@@ -11,6 +11,14 @@ CORS(app)
 MODEL_PATH = 'plant_disease_cnn.h5'
 model = load_model(MODEL_PATH)
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"message": "Plant Disease Detection API is running!"})
+
+@app.route('/healthz', methods=['GET'])
+def health():
+    return jsonify({"status": "healthy"}), 200
+
 CLASS_LABELS = [
     'Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 
     'Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy', 
